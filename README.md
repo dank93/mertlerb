@@ -20,7 +20,7 @@ Awesome Tips!:
     Double-click on a variable to open up an auto-updating that displays
     its full value.
 
-    Variable names with a leading underscore (e.g. \_var) will be ignored.
+    Variable names with a leading underscore (e.g. _var) will be ignored.
 
     Avoid using '>>from [module] import \*' as this may import a bunch of extra
     variables that will get displayed.
