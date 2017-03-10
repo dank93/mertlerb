@@ -22,7 +22,7 @@ Awesome Tips!:
 
     Variable names with a leading underscore (e.g. _var) will be ignored.
 
-    Avoid using '>>from [module] import \*' as this may import a bunch of extra
+    Avoid using '>>from [module] import *' as this may import a bunch of extra
     variables that will get displayed.
 
     Use >>numpy.set_printoptions(threshold=numpy.nan) to prevent breaks when
@@ -30,9 +30,9 @@ Awesome Tips!:
 
 More Info:
 
-    Types and classes in mertlerb.\_excludedclasses and mertlerb.\_excludedtypes
+    Types and classes in mertlerb._excludedclasses and mertlerb._excludedtypes
     are ignored.
 
-    \*This module uses ZeroMQ.
+    *This module uses ZeroMQ.
 
 Send comments, suggestions, and beer to Daniel Kurek at dkurek93@gmail.com.
