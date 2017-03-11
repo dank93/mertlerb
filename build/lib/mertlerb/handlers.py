@@ -4,7 +4,7 @@ Function to parse globals() dict and class to manage communication with guis
 from types import ModuleType, TypeType, BuiltinFunctionType, FunctionType
 from types import ClassType
 from sys import getsizeof
-import main
+import api
 import zmq
 import threading
 import time
@@ -76,12 +76,12 @@ class messenger: # class that handles periodic variable checking and sends to gu
         self._send2subgui() # let ur side hoes know you still love em
         if _return: # if we got a response
             if 'KILL' in _return.keys(): # and if it was a kill flag
-                main.kill() # trigger shutdown
+                api.kill() # trigger shutdown
                 return
             elif 'VARREQ' in _return.keys(): # check for var data request
                 self._launchsubgui(_return['VARREQ'])
         self._lastvars = _newvars # update lastVariables dict
-        self._loop = threading.Timer(main._UPDATETIME, self.runauto) # reset timer
+        self._loop = threading.Timer(api._UPDATETIME, self.runauto) # reset timer
         self._loop.daemon = True # make sure timer thread shuts down with main inerpreter
         self._loop.start() # start timer
 
@@ -132,7 +132,7 @@ class messenger: # class that handles periodic variable checking and sends to gu
             pass
         self._socket.send_json({'kIlLfLaG':'bye'}) # send kill flag to gui
         self._subguisocket.send_json({'kIlLfLaG':'bye'}) # send kill flag to subguis
-        time.sleep(2*main._UPDATETIME) # wait for gui to receive it
+        time.sleep(2*api._UPDATETIME) # wait for gui to receive it
         self._socket.close() # close socket
         self._subguisocket.close() # close socket
         self._context.term() # close zmq context

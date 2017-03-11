@@ -38,5 +38,5 @@ More Info:
 Send comments, suggestions, and beer to Daniel Kurek at dkurek93@gmail.com.
 """
 
-from main import launch, kill, _test, refreshtime, clear
+from api import launch, kill, _test, refreshtime, clear
 from handlers import _excludedtypes, _excludedclasses

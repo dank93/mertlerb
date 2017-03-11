@@ -2,7 +2,7 @@ from Tkinter import *
 from ttk import *
 import zmq
 import time
-import main
+import api
 import sys
 
 if __name__ == "__main__":
@@ -35,7 +35,7 @@ if __name__ == "__main__":
                 pass
         else: # do nothing if recieved empty dict
             pass
-        root.after(int(main._UPDATETIME*1000), updateGUI) # do again after _UPDATETIME secs
+        root.after(int(api._UPDATETIME*1000), updateGUI) # do again after _UPDATETIME secs
 
     def display(m): # displays vars
         k = [str(kk) for kk in m.keys()]
@@ -44,7 +44,7 @@ if __name__ == "__main__":
             tree.delete(row) # delete current displayed vars
         for num, i in enumerate(k): # make new items and insert into gui
             n = m[i]['name']
-            v = (m[i]['value'], m[i]['type'], m[i]['size'])
+            v = (m[i]['value'], m[i]['type'])#, m[i]['size'])
             tree.insert("" , num, text=n, values=v)
 
     lastdoubleclick = time.time()
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     def close(): # gui close callback
         root.destroy() # close window
         socket.send_json({'KILL':None}) # initiate full shutdown
-        time.sleep(2*main._UPDATETIME) # wait a bit
+        time.sleep(2*api._UPDATETIME) # wait a bit
         socket.close() # close sockets
         context.term()
 
@@ -69,21 +69,21 @@ if __name__ == "__main__":
     root = Tk()
     root.title('Workspace')
     root.protocol("WM_DELETE_WINDOW", close)
-    root.after(int(main._UPDATETIME*1000), updateGUI)
+    root.after(int(api._UPDATETIME*1000), updateGUI)
     root.lift()
     root.attributes('-topmost',True)
 
     # make tree
     tree = Treeview(root)
-    tree["columns"]=("value", "type", "size")
-    tree.column("#0", width=70, anchor='w')
-    tree.column("value", width=70, anchor='e')
+    tree["columns"]=("value", "type")#, "size")
+    tree.column("#0", width=70, anchor='center')
+    tree.column("value", width=70, anchor='center')
     tree.column("type", width=70, anchor='center')
-    tree.column("size", width=70, anchor='center')
+    # tree.column("size", width=70, anchor='center')
     tree.heading("#0", text="Name")
     tree.heading("value", text="Value")
     tree.heading("type", text="Type")
-    tree.heading("size", text="Size")
+    # tree.heading("size", text="Size")
     tree.bind("<Double-1>", OnDoubleClick)
     tree.pack(expand=1, fill=BOTH)
 

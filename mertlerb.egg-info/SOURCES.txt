@@ -1,8 +1,8 @@
 setup.py
 mertlerb/__init__.py
+mertlerb/api.py
 mertlerb/gui.py
 mertlerb/handlers.py
-mertlerb/main.py
 mertlerb/subgui.py
 mertlerb.egg-info/PKG-INFO
 mertlerb.egg-info/SOURCES.txt

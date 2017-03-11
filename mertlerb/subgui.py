@@ -2,7 +2,7 @@ import zmq
 import time
 from Tkinter import *
 from ttk import *
-import main
+import api
 import sys
 
 if __name__ == "__main__":
@@ -28,7 +28,7 @@ if __name__ == "__main__":
                 root.destroy() # kill window
             else: # no change in variable
                 pass
-        root.after(int(main._UPDATETIME*1000), checkmessenger) # otherwise reset timer
+        root.after(int(api._UPDATETIME*1000), checkmessenger) # otherwise reset timer
 
     def close(): # cleanup
         root.destroy()
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     root = Tk()
     root.title(var)
     root.protocol("WM_DELETE_WINDOW", close)
-    root.after(int(main._UPDATETIME*1000), checkmessenger)
+    root.after(int(api._UPDATETIME*1000), checkmessenger)
     root.attributes('-topmost',True)
     root.lift()
 
