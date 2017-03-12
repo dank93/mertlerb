@@ -1,3 +1,4 @@
+from __future__ import print_function
 import handlers
 import os
 import atexit
@@ -26,7 +27,7 @@ def launch(): # run with globals() as arg to launch window
         return
     if os.name != 'posix' and os.name != 'nt':  # launch gui in new process
         raise OSError('Mertlerb can only run on Posix or Windows.')
-    print "MERTLERB"
+    print("MERTLERB")
     atexit.register(kill) # ensure shutdown when quitting inerpreter
     _msgr = handlers.messenger(_gv) # initialize messenger class
     if os.name == 'posix':  # launch gui in new process
@@ -74,7 +75,7 @@ def kill(): # cleanup
     if _msgr: # in case msgr already deleted
         _msgr.destroyconnection() # have messenger kill threads and gui
         del _msgr
-        print "-mertlerb-"
+        print("-mertlerb-")
     _msgr = None
     _gv.pop('_wOrKsPaCe', None) # remove flag variable from workspace
 
@@ -98,4 +99,4 @@ def refreshtime(t): # set refresh time
 
 def _test(): # random test function
     """Nothing special."""
-    print "mErTlErB"
+    print("mErTlErB")

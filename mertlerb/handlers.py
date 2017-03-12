@@ -1,7 +1,6 @@
 """
 Function to parse globals() dict and class to manage communication with guis
 """
-from types import ModuleType, TypeType, BuiltinFunctionType, FunctionType
 from types import ClassType
 from sys import getsizeof
 import api
@@ -14,8 +13,7 @@ _MAXCHARS = 50 # max num of chars displayed in value column of gui
 
 # strip globals() of the following
 _extras = ['In', 'Out', 'exit', 'get_ipython', 'quit'] # random keys to get rid of in globals()
-_excludedtypes = [#ModuleType, TypeType, BuiltinFunctionType, FunctionType,
-                  ClassType]
+_excludedtypes = [ClassType]
 _excludedclasses = ['Macro', 'module', 'type', 'builtin_function_or_method',
                     'function', 'class', 'ManagedProperties']
 

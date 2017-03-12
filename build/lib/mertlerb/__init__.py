@@ -38,5 +38,5 @@ More Info:
 Send comments, suggestions, and beer to Daniel Kurek at dkurek93@gmail.com.
 """
 
-from api import launch, kill, _test, refreshtime, clear
-from handlers import _excludedtypes, _excludedclasses
+from mertlerb.api import launch, kill, _test, refreshtime, clear
+from mertlerb.handlers import _excludedtypes, _excludedclasses
